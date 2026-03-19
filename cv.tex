@@ -1,0 +1,119 @@
+\documentclass{article}
+\pagestyle{empty}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{
+  a4paper,
+  top=10mm,
+  left=15mm,
+  total={180mm, 277mm}
+}
+\usepackage{lipsum}
+\usepackage{fontawesome}
+\usepackage{graphicx} % Required for inserting images
+\newlength{\sectionspacing}
+\setlength{\sectionspacing}{0.2cm}
+\newcommand{\cvcompany}[2]{%
+  \noindent{\bf #1}, #2\newline
+}
+\newcommand{\cvrole}[2]{%
+  \noindent{\bf #1} \hfill #2\newline
+}
+
+\begin{document}
+\noindent
+\begin{minipage}[t]{0.65\textwidth}
+    \vspace{0pt}
+    \raggedright
+    {\Huge Artem Kislovskiy}\\[0.2cm]
+    {\Large Software Engineer}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.35\textwidth}
+  \vspace{0pt}
+  \raggedright
+  \begin{tabular}{@{}cl@{}}
+    \faMapMarker  & Lausanne, Switzerland \\
+    \faFlag       & Permit B \\
+    \faEnvelope   & \href{mailto:kislovskiy@proton.me}{kislovskiy@proton.me} \\
+    \faPhone      & +41 78 779 83 99 \\
+    \faLinkedin   & \href{https://linkedin.com/in/artemkislovskiy}{linkedin.com/in/artemkislovskiy} \\
+    \faGithub     & \href{https://github.com/kislovskiy}{github.com/kislovskiy}
+  \end{tabular}
+\end{minipage}
+\vspace{\sectionspacing}
+
+Backend engineer with over 6 years of experience building data infrastructure and tooling at internet scale.
+I drove the early adoption of cloud, Kubernetes, and CI/CD, then codified lessons with platform teams into reusable patterns for a smoother organization-wide rollout.
+I  work across six languages: Scala/Java for data and concurrency, Python for ML and tooling, Go \& TypeScript for Grafana extensions, applying each where it excels rather than defaulting to the familiar.
+
+\vspace{\sectionspacing}
+\begin{tabular}{ll}
+  Languages:    & Python, Scala, Java, Go, TypeScript, Bash \\
+  Frameworks:   & Akka/Pekko, SpringBoot, Apache Spark, TensorFlow, PyTorch \\
+  Platform:     & Kubernetes, Docker, AWS, Terraform, Jenkins, GitHub Actions, Grafana, Prometheus, Splunk \\
+\end{tabular}
+\vspace{\sectionspacing}
+\vspace{\sectionspacing}
+
+\noindent
+Experience\newline
+\cvcompany{Verisign}{Fribourg, Switzerland}
+\cvrole{Software Engineer -- Data Engineering Team}{Sep 2023 --- Apr 2026}
+\vspace{-\topsep}
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \item I built the company’s first Jenkins CI/CD pipeline for Kubernetes, automating security approvals, vulnerability scans, artifact signing, and environment promotion.
+    I cut certification time for three teams from days to under an hour per release, and reduced artifact metadata propagation from three hours to five minutes by re‑architecting the Renovate integration.
+    \item I led the migration from Akka to Pekko to reduce licensing costs. Starting from a hackathon proof of concept, I produced a technical analysis, validated the approach with industry contacts, and migrated core apps to production without disruption. I built a zero‑downtime migration using simple build tool to compile both flavors from a single Akka source. The implementation is selected at startup, enabling safe blue/green rollout with instant rollback.
+    \item As one of two engineers, I owned data ingestion and integrity organization-wide, processing 500000 records per second in real time. Operating across six languages sharpened my fluency and reliability as a cross‑stack generalist.
+\end{itemize}
+
+\cvrole{Software Engineer – NameStudio API Team (\href{https://namestudioapi.com}{namestudioapi.com})}{Jan 2020 --- Sep 2023}
+\vspace{-\topsep}
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \item I eliminated a Python-Java bottleneck by migrating the machine learning model serving to TensorFlow Serving, unifying training and inference, and accelerating the ML experimentation cycle.
+    This migration reduced CPU utilization at equivalent load, validated through a full Gatling load-test suite, and deployed in parallel with full production stability.
+    The decoupled architecture enabled GPU-based compute migration, seamless addition of ML microservices, and straightforward LLM integration.
+    I documented the architecture, enabling other engineers to onboard and contribute independently.
+    \item I built A/B testing infrastructure and Apache Spark pipelines that produced a quantified proof of the API's impact on .COM and .NET domain registrations.
+    I designed a mathematical model to correlate server logs and domain data, delivering Tableau dashboards and daily PDF reports for engineering, product, and marketing.
+\end{itemize}
+
+\vspace{\sectionspacing}
+\cvcompany{EPFL}{Lausanne, Switzerland}
+\cvrole{Research Assistant -- Unsteady Flow Diagnostics Laboratory}{Sep 2018 --- Nov 2019}
+\vspace{-\topsep}
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \item I applied fluid dynamics and machine learning to develop a convolutional neural network that removes artifacts from particle image velocimetry data.
+    I served as a Teaching Assistant for ME445 Aerodynamics, creating hands-on exercises, assessments, and training materials.
+\end{itemize}
+
+\vspace{\sectionspacing}
+\noindent
+Education\newline
+{\bf EPFL} École Polytechnique Fédérale de Lausanne \hfill Sep 2018 --- Nov 2019 \\
+Doctoral Candidate, Doctoral Program in Mechanics (EDME) - transitioned to industry before completion.\newline
+\noindent
+{\bf MIPT} Moscow Institute of Physics and Technology\newline
+M.Sc. with Honors in Applied Mathematics and Physics(Computational Fluid Dynamics) \hfill Sep 2016 --- Jul 2018\newline
+B.Sc. in applied Math and Physics \hfill Sep 2012 --- Jul 2016\newline
+
+\vspace{\sectionspacing}
+\noindent
+Volunteering\newline
+\cvcompany{EuroPython Society}{Agnesberg, Sweden}
+\cvrole{Vice Chair}{Oct 2023 --- Nov 2024}
+\vspace{-\topsep}
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{-30pt}
+    \item As Vice Chair and sponsorship lead, I secured EuroPython funding, sourced partners, closed deals, and built a tracking system with a three-person volunteer team.
+\end{itemize}
+
+\end{document}
