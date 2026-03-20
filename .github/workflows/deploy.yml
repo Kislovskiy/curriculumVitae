@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
 
 concurrency:
   group: pages
@@ -15,7 +14,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     container:
       image: texlive/texlive:latest
     steps:
@@ -36,6 +35,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-slim
+    permissions:
+      pages: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
