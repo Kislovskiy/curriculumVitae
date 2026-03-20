@@ -1,0 +1,64 @@
+name: Build and Deploy CV
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Compile LaTeX
+        run: pdflatex -jobname=cv_kislovskiy cv.tex
+
+      - name: Prepare pages artifact
+        run: |
+          mkdir -p _site
+          cp cv_kislovskiy.pdf _site/
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>CV – Artem Kislovskiy</title>
+            <style>* { margin:0; padding:0; } html,body,iframe { width:100%; height:100vh; } .fallback { display:none; } iframe:not([src]) ~ .fallback, iframe[src=""] ~ .fallback { display:block; }</style>
+          </head>
+          <body>
+            <iframe src="cv_kislovskiy.pdf" title="CV – Artem Kislovskiy"></iframe>
+            <p class="fallback" style="padding:2rem;font-family:sans-serif">
+              Your browser cannot display the PDF inline.
+              <a href="cv_kislovskiy.pdf">Download cv_kislovskiy.pdf</a>
+            </p>
+          </body>
+          </html>
+          EOF
+
+      - uses: actions/upload-pages-artifact@v4.0.0
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-slim
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5
