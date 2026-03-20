@@ -1,0 +1,45 @@
+name: Build and Deploy CV
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-slim
+    container:
+      image: texlive/texlive:latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Compile LaTeX
+        run: pdflatex -jobname=cv_kislovskiy cv.tex
+
+      - name: Prepare pages artifact
+        run: |
+          mkdir -p _site
+          cp cv_kislovskiy.pdf _site/
+
+      - uses: actions/upload-pages-artifact@v4.0.0
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-slim
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5
