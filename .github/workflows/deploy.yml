@@ -2,7 +2,7 @@ name: Build and Deploy CV
 
 on:
   push:
-    branches: [main, create-ci]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

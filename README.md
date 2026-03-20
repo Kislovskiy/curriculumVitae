@@ -1,5 +1,7 @@
 # curriculumVitae
 
+[![CV](https://img.shields.io/badge/View%20CV-GitHub%20Pages-blue?logo=github)](https://kislovskiy.github.io/curriculumVitae/)
+
 My CV as a software engineer, written in LaTeX.
 
 No LaTeX installation needed — compilation runs inside [Docker](https://www.docker.com/).
