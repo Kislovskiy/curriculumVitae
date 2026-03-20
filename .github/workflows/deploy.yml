@@ -2,7 +2,7 @@ name: Build and Deploy CV
 
 on:
   push:
-    branches: [main]
+    branches: [main, update-cv-2]
   workflow_dispatch:
 
 permissions:
