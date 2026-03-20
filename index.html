@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV – Artem Kislovskiy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; background: #404040; }
+  </style>
+</head>
+<body>
+  <script>
+    const base = window.location.href.replace(/\/[^\/]*$/, '/');
+    window.location.replace(base + 'pdfjs/viewer.html?file='
+      + encodeURIComponent(base + 'cv_kislovskiy.pdf'));
+  </script>
+  <noscript>
+    <p style="padding:2rem;font-family:sans-serif;color:#fff">
+      <a href="cv_kislovskiy.pdf" style="color:#7af">Download CV</a>
+    </p>
+  </noscript>
+</body>
+</html>
