@@ -27,6 +27,19 @@ jobs:
         run: |
           mkdir -p _site
           cp cv_kislovskiy.pdf _site/
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>CV – Artem Kislovskiy</title>
+            <style>* { margin:0; padding:0; } html,body,embed { width:100%; height:100vh; }</style>
+          </head>
+          <body>
+            <embed src="cv_kislovskiy.pdf" type="application/pdf" width="100%" height="100%">
+          </body>
+          </html>
+          EOF
 
       - uses: actions/upload-pages-artifact@v4.0.0
         with:
