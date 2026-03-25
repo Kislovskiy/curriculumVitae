@@ -2,11 +2,8 @@ name: Build and Deploy CV
 
 on:
   push:
-    branches: [main]
+    branches: [main, fix-permissions]
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 concurrency:
   group: pages
